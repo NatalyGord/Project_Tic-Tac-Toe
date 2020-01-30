@@ -3,8 +3,15 @@ package ticTacToe;
 public class Main {
 
     public static void main(String[] args){
-        System.out.println("X " + "0 " + "X ");
-        System.out.println("0 " + "X " + "X ");
-        System.out.println("X " + "0 " + "0 ");
+        System.out.print('X' + " ");
+        System.out.print('O' + " ");
+        System.out.println('X');
+        System.out.print('O' + " ");
+        System.out.print('X' + " ");
+        System.out.println('O');
+        System.out.print('X' + " ");
+        System.out.print('X' + " ");
+        System.out.println('O');
+
     }
 }
