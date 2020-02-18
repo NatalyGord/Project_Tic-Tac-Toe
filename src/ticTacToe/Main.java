@@ -10,11 +10,24 @@ public class Main {
         int nO = 0;
         int i = 0;
         int j = 0;
-        char res = 0;
+        int res = 0; //считает количество выигрышей
+        char win = '0';
         char arr[][] = new char[3][3];
         for(i = 0; i < 3; i++){         //заполняем массив
             for(j =0; j < 3; j++) {
                 arr[i][j] = scanner.findInLine(".").charAt(0);
+                if(arr[i][j] == 'X'){  //считает количество Х
+                    nX++;
+                }
+                else {
+                    if (arr[i][j] == 'O') { //считает количество О
+                        nO++;
+                    } else {
+                        if (arr[i][j] == '_') {    //считает количество _
+                            n++;
+                        }
+                    }
+                }
             }
         }
         System.out.println("---------");     //печатаем поле
@@ -26,33 +39,52 @@ public class Main {
             System.out.println('|' + " ");
         }
         System.out.println("---------");
+        //System.out.println(nX + " - X");
+        //System.out.println(nO + " - O");
+        //System.out.println(n + " - _ ");
 
-        /*if (arr[i][j] == 'X') {
-            nX++;
-            //win X
-            //
-        } else {
-            if (arr[i][j] == 'O') {
-                nO++;
-                //win O
-            } else {
-                if (arr[i][j] == '_') {                     //это после проверки на выигрыш
-                    n++;
-                    if (n > 0) {
-                        System.out.println("Game not finished");
+        if (nX - nO > 1 || nX - nO < -1) {   //ошибка когда Х или О больше чем на 1
+            System.out.println("Impossible");
+        }
+        else {
+            if ((arr[0][0] == arr[0][1] && arr[0][0] == arr[0][2])
+                || (arr[0][0] == arr[1][0] && arr[0][0] == arr[2][0])
+                || (arr[0][0] == arr[1][1] && arr[0][0] == arr[2][2])){
+                res++;
+                win = arr[0][0];
+            }
+            if ((arr[1][0] == arr[1][1] && arr[1][0] == arr[1][2])
+                || (arr[0][1] == arr[1][1] && arr[0][1] == arr[2][1])){
+                res++;
+                win = arr[1][1];
+            }
+            if (arr[2][0] == arr[2][1] && arr[2][0] == arr[2][2]) {
+                res++;
+                win = arr[2][0];
+            }
+            if ((arr[0][2] == arr[1][2] && arr[0][2] == arr[2][2])
+                || (arr[0][2] == arr[1][1] && arr[0][2] == arr[2][0])){
+                res++;
+                win = arr[0][2];
+            }
+            if(res >= 2){
+                System.out.println("Impossible");
+            }
+            else{
+                if(res == 1) {
+                    System.out.println(win + " wins");
+                }
+                else{
+                    if(res == 0){
+                        if (n > 0) {
+                            System.out.println("Game not finished");
+                        }
+                        else {
+                            System.out.println("Draw");
+                        }
                     }
                 }
             }
         }
-        if (nX - nO > 1 || nX - nO < -1) {  // прописать когда и х и о выигрышные
-            System.out.println("Impossible");
-        }*/
-
-
-        /*if(a1 == a2 && a2 == a3 || b1 == b2 && b2 == b3 || c1 == c2 && c2 == c3 ||
-                a1 == b1 && b1 == c1 || a2 == b2 && b2 == c2 || a3 == b3 && b3 == c3 ||
-                a3 == b2 && b2 == c1 || a1 == b2 && b2 == c3){
-            System.out.println(a1 + " wins");
-        }*/
     }
 }
