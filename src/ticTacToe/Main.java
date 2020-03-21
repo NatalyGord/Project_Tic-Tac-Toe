@@ -42,6 +42,35 @@ public class Main {
         //System.out.println(nX + " - X");
        // System.out.println(nO + " - O");
        // System.out.println(n + " - _ ");
+        System.out.println();
+        System.out.println("Enter the coordinates: ");
+        String a = scanner.next();
+        String b = scanner.next();
+        int aInt = 0;
+        int bInt = 0;
+        while(true) {
+            if (a.matches("[0-9]+") && b.matches("[0-9]+")) {     //проверка на число
+                if(a.matches("[1-3]") && b.matches("[1-3]")){
+                    aInt = Integer.parseInt(a);
+                    bInt = Integer.parseInt(b);
+                    System.out.println(aInt + " " + bInt);
+                    break;
+                }
+                else {
+                    System.out.println("Coordinates should be from 1 to 3!");
+                    System.out.println("Enter the coordinates: ");
+                    a = scanner.next();
+                    b = scanner.next();
+                }
+            }
+            else {
+                System.out.println("You should enter numbers!");
+                System.out.println("Enter the coordinates: ");
+                a = scanner.next();
+                b = scanner.next();
+            }
+        }
+
 
         if (nX - nO > 1 || nX - nO < -1) {   //ошибка когда Х или О больше чем на 1
             System.out.println("Impossible");
